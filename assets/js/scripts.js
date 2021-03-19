@@ -17,18 +17,9 @@
     }
     var code = $container.getAttribute('data-source');
     var token = $loader.getAttribute('data-token');
-    var endpoint = 'http://pricelinkonline.com/dealers/service.php';
+    var endpoint = `https://uran.io/panasonic/service/getRequest/${token}/${code}`;
 
-    var url = new URL(endpoint),
-        params = {code, token};
-
-    Object.keys(params).forEach(function (key) {
-
-        url.searchParams.append(key, params[key]);
-
-    });
-
-    fetch(url).then((response) => {
+    fetch(endpoint).then((response) => {
 
         if (response.ok) {
 
