@@ -37,7 +37,7 @@
 
     }).then((data) => {
 
-        if (data.codigo !== 200) {
+        if (data.codigo != 200) {
 
             console.warn('¯\\_(ツ)_/¯ Product not found')
             return;
@@ -45,14 +45,15 @@
         }
 
         var host = `${window.location.protocol}//${window.location.host}`;
+        var urlEmbed = data.datos[0].url;
 
-        $container.innerHTML = `<iframe src="${data.response}#${host}" width="100%" height="0" frameborder="0"></iframe>`;
+        $container.innerHTML = `<iframe src="${urlEmbed}#${host}" width="100%" height="0" frameborder="0"></iframe>`;
 
         window.addEventListener('message', (event) => {
 
-            if (data.response.indexOf(event.origin) !== -1) {
+            if (urlEmbed.indexOf(event.origin) !== -1) {
 
-                $container.querySelector(`iframe[src="${data.response}"]`).height = event.data.height;
+                $container.querySelector(`iframe[src="${urlEmbed}#${host}"]`).height = event.data.height;
 
             }
 
