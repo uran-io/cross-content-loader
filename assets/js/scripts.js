@@ -3,7 +3,7 @@
     var $loader = document.querySelector('script[cross-content-script]');
     if (!$loader) {
 
-        console.warn('Loader script tag not found');
+        console.warn('(╯°□°）╯︵ ┻━┻ Loader script tag not found');
         return;
 
     }
@@ -11,7 +11,7 @@
     var $container = document.querySelector($loader.getAttribute('data-selector'));
     if (!$container) {
 
-        console.warn('Container not found. This is not a panasonic product');
+        console.warn('(⊙.☉) Container not found. This is not a panasonic product');
         return;
 
     }
@@ -36,6 +36,13 @@
         }
 
     }).then((data) => {
+
+        if (data.codigo !== 200) {
+
+            console.warn('¯\\_(ツ)_/¯ Product not found')
+            return;
+
+        }
 
         var host = `${window.location.protocol}//${window.location.host}`;
 
