@@ -39,13 +39,13 @@
 
         if (data.codigo != 200) {
 
-            console.warn('¯\\_(ツ)_/¯ Product not found')
+            console.warn('¯\\_(ツ)_/¯ Product not found');
             return;
 
         }
 
         var host = `${window.location.protocol}//${window.location.host}`;
-        var urlEmbed = data.datos[0].url;
+        var urlEmbed = data.datos[0].url.split('#')[0];
 
         $container.innerHTML = `<iframe src="${urlEmbed}#${host}" width="100%" height="0" frameborder="0"></iframe>`;
 
