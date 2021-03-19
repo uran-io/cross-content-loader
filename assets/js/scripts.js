@@ -16,7 +16,7 @@
 
     }
     var code = $container.getAttribute('data-source');
-    var token = $container.getAttribute('data-token');
+    var token = $loader.getAttribute('data-token');
     var endpoint = 'http://pricelinkonline.com/dealers/service.php';
 
     var url = new URL(endpoint),
@@ -38,7 +38,7 @@
 
             } catch (e) {
 
-                throw response.text();
+                throw e;
 
             }
 
@@ -46,7 +46,9 @@
 
     }).then((data) => {
 
-        $container.innerHTML = `<iframe src="${data.response}" width="100%" height="0" frameborder="0"></iframe>`;
+        var host = `${window.location.protocol}//${window.location.host}`;
+
+        $container.innerHTML = `<iframe src="${data.response}#${host}" width="100%" height="0" frameborder="0"></iframe>`;
 
         window.addEventListener('message', (event) => {
 

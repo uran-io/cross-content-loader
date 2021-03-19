@@ -16,8 +16,8 @@
 
     }
     var code = $container.getAttribute('data-source');
-    var token = $container.getAttribute('data-token');
-    var endpoint = 'http://pricelinkonline.com/dealers/service.php';
+    var token = $loader.getAttribute('data-token');
+    var endpoint = 'https://pricelinkonline.com/dealers/service.php';
 
     var url = new URL(endpoint),
         params = {code, token};
