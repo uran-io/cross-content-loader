@@ -15,6 +15,13 @@
         return;
 
     }
+
+    if(!$container.getAttribute('data-source')) {
+
+        console.warn('(⊙.☉) Product [data-source] is not set');
+
+    }
+
     var code = $container.getAttribute('data-source');
     var token = $loader.getAttribute('data-token');
     var endpoint = `https://uran.io/panasonic/service/getRequest/${token}/${code}`;
