@@ -19,6 +19,7 @@
     if(!$container.getAttribute('data-source')) {
 
         console.warn('(⊙.☉) Product [data-source] is not set');
+        return;
 
     }
 
