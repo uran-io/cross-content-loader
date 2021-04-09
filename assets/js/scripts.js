@@ -45,14 +45,14 @@
 
     }).then((data) => {
 
-        if (data.codigo !== 200) {
+        if (data.codigo !== '200') {
 
             console.warn('¯\\_(ツ)_/¯ Product not found');
             return;
 
         }
 
-        let host = `${window.location.protocol}//${window.location.host}`,
+        const host = `${window.location.protocol}//${window.location.host}`,
             urlEmbed = data.datos[0].url.split('#')[0];
 
         $container.innerHTML = `<iframe src="${urlEmbed}#${host}" width="100%" height="0" style="border: 0;"></iframe>`;
