@@ -1,6 +1,6 @@
 (function () {
 
-    var $loader = document.querySelector('script[cross-content-script]');
+    const $loader = document.querySelector('script[cross-content-script]');
     if (!$loader) {
 
         console.warn('(╯°□°）╯︵ ┻━┻ Loader script tag not found');
@@ -8,7 +8,7 @@
 
     }
 
-    var $container = document.querySelector($loader.getAttribute('data-selector'));
+    const $container = document.querySelector($loader.getAttribute('data-selector'));
     if (!$container) {
 
         console.warn('(⊙.☉) Container not found. This is not a panasonic product');
@@ -16,16 +16,16 @@
 
     }
 
-    if(!$container.getAttribute('data-source')) {
+    if (!$container.getAttribute('data-source')) {
 
         console.warn('(⊙.☉) Product [data-source] is not set');
         return;
 
     }
 
-    var code = $container.getAttribute('data-source');
-    var token = $loader.getAttribute('data-token');
-    var endpoint = `https://uran.io/panasonic/service/getRequest/${token}/${code}`;
+    const code = $container.getAttribute('data-source'),
+        token = $loader.getAttribute('data-token'),
+        endpoint = `https://uran.io/panasonic/service/getRequest/${token}/${code}`;
 
     fetch(endpoint).then((response) => {
 
@@ -45,17 +45,17 @@
 
     }).then((data) => {
 
-        if (data.codigo != 200) {
+        if (data.codigo !== 200) {
 
             console.warn('¯\\_(ツ)_/¯ Product not found');
             return;
 
         }
 
-        var host = `${window.location.protocol}//${window.location.host}`;
-        var urlEmbed = data.datos[0].url.split('#')[0];
+        let host = `${window.location.protocol}//${window.location.host}`,
+            urlEmbed = data.datos[0].url.split('#')[0];
 
-        $container.innerHTML = `<iframe src="${urlEmbed}#${host}" width="100%" height="0" frameborder="0"></iframe>`;
+        $container.innerHTML = `<iframe src="${urlEmbed}#${host}" width="100%" height="0" style="border: 0;"></iframe>`;
 
         window.addEventListener('message', (event) => {
 
