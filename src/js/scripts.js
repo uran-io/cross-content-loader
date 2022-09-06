@@ -25,7 +25,7 @@
 
     const code = $container.getAttribute('data-source'),
         token = $loader.getAttribute('data-token'),
-        endpoint = `https://uran.io/panasonic/service/getRequest/${token}/${code}`;
+        endpoint = `http://pricelinkonline.com/dealers/backoffice/service/getRequest/${token}/${code}`;
 
     fetch(endpoint).then((response) => {
 
